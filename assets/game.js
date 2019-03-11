@@ -5,7 +5,9 @@
  * of different sizes which can slide on any rod, thus forming a conical shape.
  *
  * @file   A JavaScript HTML5 solution to the Towers of Hanoi
+ * @author Joshua Winkler
  * @since  17.02.2019
+ * @license MIT
  */
 
 // Canvas context
