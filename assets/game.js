@@ -21,17 +21,17 @@ var isStarted = false;
 
 // Game entry point
 (function () { // DOM ready
-    canvas = document.getElementById("primaryCanvas");
-    ctx = canvas.getContext("2d");
+    canvas = document.getElementById('primaryCanvas');
+    ctx = canvas.getContext('2d');
 
     // Start game button click listener
-    document.getElementById("continueButton").addEventListener("click", (event) => {
-        document.getElementById("mod").className += " fadeOut-modal";
+    document.getElementById('continueButton').addEventListener('click', (event) => {
+        document.getElementById('mod').className += ' fadeOut-modal';
         setTimeout(() => {
-            document.getElementById("mod").style = "display: none;";
-            document.getElementById("mod-ov").style = "display: none;";
+            document.getElementById('mod').style = 'display: none;';
+            document.getElementById('mod-ov').style = 'display: none;';
         }, 980);
-        fadeOut("mod-ov", 0.02, 10, 0.7);
+        fadeOut('mod-ov', 0.02, 10, 0.7);
         isStarted = true;
     });
 
@@ -67,8 +67,8 @@ var isStarted = false;
     // Setup stage for the first time
     setupGameStage();
 
-    console.log("%cTowers of Hanoi V1.1", "font-size: 35pt; color: blue; text-stroke-width: 1px; text-stroke-color: black;");
-    console.log("%c(No cheating!)", "font-size: 8pt;");
+    console.log('%cTowers of Hanoi V1.1', 'font-size: 35pt; color: blue; text-stroke-width: 1px; text-stroke-color: black;');
+    console.log('%c(No cheating!)', 'font-size: 8pt;');
 })();
 
 // On resize reset stage
@@ -78,30 +78,33 @@ window.onresize = function (event) {
 
 // Key handler (reset on esc)
 window.onkeydown = function (event) {
-    if (isStarted && !isWon) {
-        if (event.code === "Escape" && lastStick != undefined) {
-            sticks.get(lastStick).toggleCircle();
-            lastStick = undefined;
-            setupGameStage(); // reload game stage
-            return;
-        }
-        if (event.key == 1 || event.key === "End") {
-            sticks.get(0).click(null, null);
-            return;
-        }
-        if (event.key == 2 || event.key === "ArrowDown") {
-            sticks.get(1).click(null, null);
-            return;
-        }
-        if (event.key == 3 || event.key === "PageDown") {
-            sticks.get(2).click(null, null);
-            return;
+    if (isStarted && !isWon) { // Don't allow key input in intro or end stage
+        switch (event.key) {
+            case 'Escape':
+                if (lastStick != undefined) {
+                    sticks.get(lastStick).toggleCircle();
+                    lastStick = undefined;
+                    setupGameStage(); // reload game stage
+                }
+                break;
+            case '1':
+            case 'End':
+                sticks.get(0).click(null, null);
+                break;
+            case '2':
+            case 'ArrowDown':
+                sticks.get(1).click(null, null);
+                break;
+            case '3':
+            case 'PageDown':
+                sticks.get(2).click(null, null);
+                break;
         }
     }
 }
 
 // Canvas click listener
-canvas.addEventListener("click", function (event) {
+canvas.addEventListener('click', function (event) {
     for (let e of sticks) {
         if (e[1].checkClicked(event.clientX, event.clientY)) {
             e[1].click(event.clientX, event.clientY);
@@ -114,7 +117,7 @@ canvas.addEventListener("click", function (event) {
  * Generic fade out effect for HTML DOM elements
  * 
  * @param {string} id the id of the DOM element to be faded out
- * @param {number} delta the alpha to be taken away from the element every "time"s
+ * @param {number} delta the alpha to be taken away from the element every 'time's
  * @param {number} time the iteration time
  * @param {number} initOpacity the initial opacity of the element
  */
@@ -147,11 +150,11 @@ function setupGameStage() {
         ctx.translate(-0.5, -0.5);
 
         // Background
-        ctx.fillStyle = "#b8b8b8";
+        ctx.fillStyle = '#b8b8b8';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // Floor
-        ctx.fillStyle = "#000000";
+        ctx.fillStyle = '#000000';
         ctx.fillRect(0, Math.max(500, canvas.height - 150), canvas.width, canvas.height);
 
         // Redraw all elements
@@ -195,12 +198,12 @@ function checkWin() {
 function drawWinAnimation() {
     isWon = true;
     alphaBG += 0.01;
-    ctx.fillStyle = "#000000";
+    ctx.fillStyle = '#000000';
     if (alphaBG >= 1) {
-        document.getElementById("winTitle").className += "display";
-        document.getElementById("winHead").className += "fadeIn";
+        document.getElementById('winTitle').className += 'display';
+        document.getElementById('winHead').className += 'fadeIn';
         setTimeout(() => {
-            document.getElementById("winSub").className += "fadeIn";
+            document.getElementById('winSub').className += 'fadeIn';
         }, 1000);
         return;
     } else {
@@ -227,7 +230,7 @@ function Stick(position, width, disks) {
      * Draws the stick to the canvas
      */
     this.draw = function () {
-        ctx.fillStyle = "#000000";
+        ctx.fillStyle = '#000000';
         let coords = ctx.fillRectCenter(canvas.width / 4 * (position + 1), 150,
             width, canvas.height * -1);
         this.x = coords[0];
@@ -308,7 +311,7 @@ function Disk(stick, position, width, height) {
      * Draws the disk to the canvas
      */
     this.draw = function () {
-        ctx.fillStyle = "#D80000";
+        ctx.fillStyle = '#D80000';
         ctx.fillRectCenter(canvas.width / 4 * (this.stick + 1), Math.max(500, (canvas.height - 150)) - ((this.position + 1) * 25),
             this.width, this.height);
     }
@@ -338,7 +341,7 @@ function Circle(stick, y, radius, toggle) {
         if (!this.toggle) {
             ctx.fillStyle = `rgb(${this.rgb[0]}, ${this.rgb[1]}, ${this.rgb[2]})`;
         } else {
-            ctx.fillStyle = "#b8b8b8";
+            ctx.fillStyle = '#b8b8b8';
         }
         ctx.fill();
     }
