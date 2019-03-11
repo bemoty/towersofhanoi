@@ -132,7 +132,6 @@ function fadeOut(id, delta, time, initOpacity) {
     }, time);
 }
 
-
 /**
  * Sets up the game background & draws all game elements
  */
@@ -180,7 +179,6 @@ function drawAll() {
 
 var alphaBG = 0;
 
-
 /**
  * Checks if the game is won (8 disks on last stick)
  */
@@ -211,8 +209,6 @@ function drawWinAnimation() {
     }
     requestAnimationFrame(drawWinAnimation);
 }
-
-let swap = false;
 
 /**
  * Represents a stick (Hanoi Tower) – stores Hanoi disks
@@ -346,5 +342,4 @@ function Circle(stick, y, radius, toggle) {
         }
         ctx.fill();
     }
-
 }
