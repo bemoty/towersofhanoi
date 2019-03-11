@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Towers of Hanoi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
+</head>
+
+<body>
+    <div class="modal fadeIn-faster" id="mod">
+        <div class="modal-head">
+            <h1>The Towers of Hanoi</h1>
+        </div>
+        <div class="modal-body">
+            <p>The Towers is a simple mathematical puzzle, which consists of three rods and a number of disk
+                of different sizes which can slide on any rod, thus forming a conical shape.
+
+                The rules are simple:
+                <ul>
+                    <li>Only one disk can be moved at a time.</li>
+                    <li>Each move consists of taking the upper disk from one of the rods and putting it on
+                        another one</li>
+                    <li>No larger disks may be placed on smaller disks.</li>
+                </ul>
+
+                Use 1, 2, 3 to move the disks. Alternatively, you can click the rod you want to select. Use the ESC key
+                to abort your current turn.
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" id="continueButton">Let's go!</a>
+        </div>
+    </div>
+    <div class="modal-overlay" id="mod-ov"></div>
+    <div id="winTitle">
+        <h1 id="winHead">You have won</h1>
+        <h4 id="winSub">Congratulations</h4>
+    </div>
+    <canvas id="primaryCanvas"></canvas>
+    <script src="assets/game.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:900|Lato');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#primaryCanvas {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.modal {
+    position: relative;
+    z-index: 17;
+    background-color: #ffffff;
+    font-family: 'Lato', sans-serif;
+    margin: 13% auto 0 auto;
+    padding: 10px 30px;
+    min-width: 300px;
+    width: 45%;
+    border-radius: 10px;
+    border-color: lightgrey;
+    border-width: 10px;
+    border-style: solid;
+}
+
+.modal-header {
+    text-align: center;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+.modal-footer a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16pt;
+    font-weight: 900;
+    color: #000000;
+    background-color: #ffffff;
+    border-color: lightgrey;
+    border-width: 7px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5px 75px;
+    margin: 15px 15px 5px 15px;
+    display: block;
+    transition-duration: 0.3s;
+}
+
+.modal-footer a:hover {
+    background-color: lightgrey;
+}
+
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 16;
+}
+
+#winTitle {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 270px;
+    width: 100%;
+    position: absolute;
+    -webkit-user-select: none;
+    z-index: 15;
+    display: none;
+}
+
+.display {
+    display: initial !important;
+}
+
+#winTitle h1 {
+    margin-bottom: 5px;
+    visibility: hidden;
+}
+
+#winTitle h4 {
+    visibility: hidden;
+    margin-top: 5px;
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    visibility: visible !important;
+}
+
+.fadeIn-faster {
+    animation-name: fadeIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    visibility: visible !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeOut-modal {
+    animation-name: fadeOut-modal;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fadeOut-modal {
+    from {
+        bottom: 0;
+    }
+
+    to {
+        bottom: 800px;
+    }
+}
