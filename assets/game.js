@@ -1,7 +1,7 @@
 /**
  * THE TOWERS OF HANOI
  *
- * The Towers is a simple mathematical puzzle, which consists of three rods and a number of disk 
+ * The Towers is a simple mathematical puzzle, which consists of three rods and a number of disks 
  * of different sizes which can slide on any rod, thus forming a conical shape.
  *
  * @file   A JavaScript HTML5 solution to the Towers of Hanoi
@@ -80,6 +80,13 @@ window.onresize = function (event) {
 
 // Key handler (reset on esc)
 window.onkeydown = function (event) {
+    if (!isStarted) { // Key handler for intro modal
+        switch (event.key) {
+            case "Enter":
+                document.getElementById('continueButton').click();
+                break;
+        }
+    }
     if (isStarted && !isWon) { // Don't allow key input in intro or end stage
         switch (event.key) {
             case 'Escape':
